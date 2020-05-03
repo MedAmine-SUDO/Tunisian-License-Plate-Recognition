@@ -1,9 +1,9 @@
 # License-Plate-Recognition
 
 
-This is my second year project at ESPRIMS
+Second year project at ESPRIMS
 
-#STEPS:
+Steps:
 
 	1- Create conda environment for project with python version 3
 	
