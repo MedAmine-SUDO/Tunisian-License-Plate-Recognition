@@ -12,6 +12,6 @@ lp_detection = pandas.read_csv('license_plates_detection_train.csv')
 
 plateDetectionImages = [cv2.imread(plate_detection_train_images_path+'/'+file) for file in os.listdir(plate_detection_train_images_path)]
 
-cv2.imshow('image1', plateDetectionImages[2])
+cv2.imshow('image1', plateDetectionImages[1])
 cv2.waitKey(0)
 cv2.destroyAllWindows()
