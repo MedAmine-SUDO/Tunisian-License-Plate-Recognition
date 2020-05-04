@@ -26,6 +26,10 @@ Steps:
 		command for matplotlib:
 
 			conda install -c conda-forge matplotlib
+			
+		command for pillow:
+		
+			conda install -c anaconda pillow
 
 	3- Launch jupyter notebook and start exploring the data
 	
