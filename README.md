@@ -34,6 +34,10 @@ Steps:
 		command for keras:
 		
 			conda install -c conda-forge keras
+			
+		conda install -c anaconda tensorflow-gpu
+			
+		conda install -c anaconda cudatoolkit
 
 
 	3- Launch jupyter notebook and start exploring the data
