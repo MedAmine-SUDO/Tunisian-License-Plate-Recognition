@@ -30,6 +30,11 @@ Steps:
 		command for pillow:
 		
 			conda install -c anaconda pillow
+			
+		command for keras:
+		
+			conda install -c conda-forge keras
+
 
 	3- Launch jupyter notebook and start exploring the data
 	
