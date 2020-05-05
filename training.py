@@ -40,6 +40,11 @@ for index, row in df.iterrows():
     dataset["xmax"].append(row['xmax'])
 
 df = pd.DataFrame(dataset)
+df.drop(["image_width", "image_height"], axis=1, inplace=True)
+ll = df.values.tolist()
+for item in ll:
+    del item[0]
+df['combined']= ll
 
 lucky_test_samples = np.random.randint(0, len(df), 5)
 reduced_df = df.drop(lucky_test_samples, axis=0)
@@ -48,9 +53,11 @@ WIDTH = 224
 HEIGHT = 224
 
 def show_img(index):
-    image = cv2.imread(PD_TRAIN_IMAGES+'/'+ df['image_name'].iloc[index])
+    image = cv2.imread(PD_TRAIN_IMAGES+ df['image_name'].iloc[index])
     width, height = image.shape[0], image.shape[1]
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     image = cv2.resize(image, dsize=(WIDTH, HEIGHT))
+    
     x_scale = ( WIDTH / height)
     y_scale = ( HEIGHT / width )
     tx = int(df["xmin"].iloc[index] * x_scale)
@@ -69,20 +76,20 @@ train_generator = datagen.flow_from_dataframe(
     reduced_df,
     directory=PD_TRAIN_IMAGES,
     x_col="image_name",
-    y_col=["ymin", "xmin", "ymax", "xmax"],
-    target_size=("image_width", "image_height"),
+    y_col=["combined"],
+    target_size=(WIDTH, HEIGHT),
     batch_size=32, 
-    class_mode=None,
+    class_mode="multi_output",
     subset="training")
 
 validation_generator = datagen.flow_from_dataframe(
     reduced_df,
     directory=PD_TRAIN_IMAGES,
     x_col="image_name",
-    y_col=["ymin", "xmin", "ymax", "xmax"],
-    target_size=("image_width", "image_height"),
+    y_col=["combined"],
+    target_size=(WIDTH, HEIGHT),
     batch_size=32, 
-    class_mode=None,
+    class_mode="multi_output",
     subset="validation")
 
 model = Sequential()
@@ -97,11 +104,9 @@ model.layers[-6].trainable = False
 
 #model.summary()
 
-#STEP_SIZE_TRAIN = int(np.ceil(train_generator.n / train_generator.batch_size))
-#STEP_SIZE_VAL = int(np.ceil(validation_generator.n / validation_generator.batch_size))
+STEP_SIZE_TRAIN = int(np.ceil(train_generator.n / train_generator.batch_size))
+STEP_SIZE_VAL = int(np.ceil(validation_generator.n / validation_generator.batch_size))
 
-STEP_SIZE_TRAIN=train_generator.n//train_generator.batch_size
-STEP_SIZE_VAL=validation_generator.n//validation_generator.batch_size
 
 print("Train step size:", STEP_SIZE_TRAIN)
 print("Validation step size:", STEP_SIZE_VAL)
@@ -113,7 +118,7 @@ adam = Adam(lr=0.0005)
 model.compile(optimizer=adam, loss="mse")
 
 history = model.fit_generator(train_generator,
-                                steps_per_epoch=STEP_SIZE_TRAIN,
-                                validation_data=validation_generator,
-                                validation_steps=STEP_SIZE_VAL,
-                                epochs=10)
+    steps_per_epoch=STEP_SIZE_TRAIN,
+    validation_data=validation_generator,
+    validation_steps=STEP_SIZE_VAL,
+    epochs=30)
