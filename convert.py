@@ -3,8 +3,8 @@ from PIL import Image
 import xml.etree.ElementTree as ET
 
 
-df = pd.read_csv('/kaggle/input/plate-zindi/license_plates_detection_train.csv')
-IMAGES_TRAINING = "/kaggle/input/plate-zindi/license_plates_detection_train/license_plates_detection_train/"
+df = pd.read_csv('/home/medamine/Desktop/License-Plate-Recognition/license_plates_detection_train.csv')
+IMAGES_TRAINING = "/home/medamine/Desktop/Dataset-pfa/license_plates_detection_train/images/"
 
 dataset = dict()
 dataset["image_name"] = list()
@@ -32,9 +32,11 @@ print(df)
 for index, row in df.iterrows():
     root = ET.Element("annotation")
     folder = ET.SubElement(root, 'folder')
-    folder.text = IMAGES_TRAINING
+    folder.text = "license_plates_detection_train"
     filenameElemnt = ET.SubElement(root, 'filename')
     filenameElemnt.text = row["image_name"]
+    pathElement = ET.SubElement(root, 'path')
+    pathElement.text = IMAGES_TRAINING
     sizeElement = ET.SubElement(root, 'size')
     widthElemtn = ET.SubElement(sizeElement, 'width')
     widthElemtn.text = str(row["image_width"])
@@ -43,6 +45,8 @@ for index, row in df.iterrows():
     depthElement = ET.SubElement(sizeElement, 'depth')
     depthElement.text = str(3)
     objectElement = ET.SubElement(root, 'object')
+    nameElement = ET.SubElement(objectElement, 'name')
+    nameElement.text = 'License Plate'
     bndboxElement = ET.SubElement(objectElement, 'bndbox')
     xmin = ET.SubElement(bndboxElement, 'xmin')
     xmin.text = str(row["xmin"])
