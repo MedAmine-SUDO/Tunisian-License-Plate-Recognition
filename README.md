@@ -1,9 +1,7 @@
-# License-Plate-Recognition
+# Tunisian-License-Plate-Recognition
+This project aims to detect and recognize Tunisian license plates with high accuracy using Mask-RCNN.
 
-
-Second year project at ESPRIMS
-
-Steps:
+## Steps for installing dependencies:
 
 	1- Create conda environment for project with python version 3
 	
