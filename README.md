@@ -45,4 +45,3 @@ This model works fine with tensorflow=1.14 and keras=2.2.5
 
 ## license
 This project is free to explore, contribute and may be redistributed under the terms specified in the [LICENSE](LICENSE.txt) file.
-
