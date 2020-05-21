@@ -43,5 +43,8 @@ This project aims to detect and recognize Tunisian license plates with high accu
 ## Supported tensorflow and keras versions
 This model works fine with tensorflow=1.14 and keras=2.2.5
 
+## Note:
+This project still under development
+
 ## license
 This project is free to explore, contribute and may be redistributed under the terms specified in the [LICENSE](LICENSE.txt) file.
