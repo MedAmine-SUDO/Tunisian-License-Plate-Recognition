@@ -1,5 +1,5 @@
 # Tunisian-License-Plate-Recognition
-This project aims to detect and recognize Tunisian license plates with high accuracy using Mask-RCNN.
+This project aims to detect and recognize Tunisian license plates with high accuracy using Mask-RCNN and Image processing techniques.
 
 ## Steps for installing dependencies:
 
