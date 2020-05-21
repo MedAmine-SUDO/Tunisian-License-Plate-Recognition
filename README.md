@@ -1,9 +1,7 @@
-# License-Plate-Recognition
+# Tunisian-License-Plate-Recognition
+This project aims to detect and recognize Tunisian license plates with high accuracy using Mask-RCNN and Image processing techniques.
 
-
-Second year project at ESPRIMS
-
-Steps:
+## Steps for installing dependencies:
 
 	1- Create conda environment for project with python version 3
 	
@@ -42,3 +40,9 @@ Steps:
 
 	3- Launch jupyter notebook and start exploring the data
 	
+## Supported tensorflow and keras versions
+This model works fine with tensorflow=1.14 and keras=2.2.5
+
+## license
+This project is free to explore, contribute and may be redistributed under the terms specified in the [LICENSE](LICENSE.txt) file.
+
