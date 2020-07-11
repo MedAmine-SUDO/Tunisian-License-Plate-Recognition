@@ -1,1 +1,5 @@
+The The data provided in this challenge is divided into 3 sets:
 
+A train set of 900 images, where each image contains only one car and one license plate. The annotations provided are the bounding box coordinates (ymin, xmin, ymax, xmax)
+A second train set of 900 images, where each image contains a license plate. The annotations provided are the characters in the license plate.
+A test set of 201 images, similar to the first training set, where you have to perform both license plate detection and recognition, however, you will be evaluated on recognition only.
