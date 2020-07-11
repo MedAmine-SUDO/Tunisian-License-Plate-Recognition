@@ -1,6 +1,6 @@
 # Tunisian-License-Plate-Recognition
 This project aims to detect and recognize the regular Tunisian license plates with high accuracy using Mask-RCNN and Image processing techniques. It is part of the Computer Vision for License Plate Recognition Challenge from Zindi (https://zindi.africa/competitions/ai-hack-tunisia-2-computer-vision-challenge-2) designed specifically for the AI Tunisia Hack 2019. 
-The data is composed of two datasets (data folder):
+The data is composed of two datasets:
 
   - A set of vehicle images (900 images) taken from the internet and annotated manually. The annotations are the coordinates of the bounding box containing the license plate.
   - A set of license plate images (900 images) where the annotations are the text written in the license plate.
